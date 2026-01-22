@@ -28,10 +28,10 @@ const envConfigs = {
   },
 } as const;
 
-type ConfigsByEnv = {
-  readonly databaseFile: string;
-  readonly currentEnv: keyof EnvConfigs;
-} & typeof commonKeys;
+// type ConfigsByEnv = {
+//   readonly databaseFile: string;
+//   readonly currentEnv: keyof EnvConfigs;
+// } & typeof commonKeys;
 
 type EnvConfigs = typeof envConfigs;
 type AllowedEnvKeys = keyof EnvConfigs;
@@ -55,8 +55,8 @@ export function getFullEnv() {
   return envConfigs[currentEnv];
 }
 
-export function getEnv<C extends keyof ConfigsByEnv>(key: C) {
-  const currentEnv = checkEnv();
-  const value = envConfigs[currentEnv][key];
-  return value;
-}
+// export function getEnv<C extends keyof ConfigsByEnv>(key: C) {
+//   const currentEnv = checkEnv();
+//   const value = envConfigs[currentEnv][key];
+//   return value;
+// }

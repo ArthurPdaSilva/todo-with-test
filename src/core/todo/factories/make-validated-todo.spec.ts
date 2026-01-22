@@ -21,7 +21,7 @@ describe("makeValidatedTodo (unit)", () => {
     //   .spyOn(sanitizeStrMod, "sanitizeStr")
     //   // Assim tira a dependência de sanitizeStrMod e substitui por algo padrão, assim não temos mais um teste de integração e sim unitário
     //   .mockReturnValue("abcd"); //Se for promise, usar .mockResolvedValue
-    const { description, sanitizeStrSpy } = makeMocks();
+    const { description, sanitizeStrSpy } = makeTestTodoMocks();
 
     // Act
     makeValidatedTodo(description);
@@ -37,7 +37,7 @@ describe("makeValidatedTodo (unit)", () => {
   test("deve chamar a função validateTodoDescription com o retorno de sanitizeStr", () => {
     // Arrange
     const { description, sanitizeStrSpy, validateTodoDescriptionSpy } =
-      makeMocks();
+      makeTestTodoMocks();
     const sanitizeStrReturn = "retorno da sanitizeStr";
     sanitizeStrSpy.mockReturnValue(sanitizeStrReturn);
 
@@ -51,7 +51,7 @@ describe("makeValidatedTodo (unit)", () => {
   });
 
   test("deve chamar a função makeValidatedTodo se validateTodoDescription retornar sucesso", () => {
-    const { description } = makeMocks();
+    const { description } = makeTestTodoMocks();
     const result = makeValidatedTodo(description) as ValidTodo;
 
     expect(result.success).toBe(true);
@@ -76,7 +76,7 @@ describe("makeValidatedTodo (unit)", () => {
 
   test("deve retornar validatedDescription.error se a função falhou", () => {
     const { errors, description, validateTodoDescriptionSpy } =
-      makeMocks("abc");
+      makeTestTodoMocks("abc");
     validateTodoDescriptionSpy.mockReturnValue({
       success: false,
       errors,
@@ -93,7 +93,7 @@ describe("makeValidatedTodo (unit)", () => {
 });
 
 // Como eu mockei todos as func de make validated todo, logo ele é um teste unitário
-const makeMocks = (description = "abcd") => {
+const makeTestTodoMocks = (description = "abcd") => {
   const errors = ["ANY", "ERROR"];
   const sanitizeStrSpy = vi
     .spyOn(sanitizeStrMod, "sanitizeStr")
