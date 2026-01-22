@@ -1,8 +1,4 @@
-export interface Todo {
-  id: string;
-  description: string;
-  createdAt: string;
-}
+import type { Todo } from "../schemas/todo.contract";
 
 export function makeNewTodo(description: string): Todo {
   return {

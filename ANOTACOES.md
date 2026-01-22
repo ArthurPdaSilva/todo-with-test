@@ -283,9 +283,11 @@ Arquivo `package.json`:
     "drizzle:migrate": "drizzle-kit migrate",
     "dev:test": "dotenv -e .env.e2e -- next dev",
     "start:test": "dotenv -e .env.e2e -- next start",
+    // Bail quando tiver uma falha, ele para de executar os testes
     "test": "dotenv -e .env.test -- vitest run --bail 1",
     "test:all": "npm run test && npm run test:e2e",
     "test:watch": "dotenv -e .env.test -- vitest --bail 1",
+    // fileParallelism só é permitido em testes unitários pq eles não conflitam entre si, eles podem rodar em paralelo
     "test:unit": "dotenv -e .env.test -- vitest run --exclude 'src/**/*.{test,e2e}.{ts,tsx}' --fileParallelism",
     "test:unit:watch": "dotenv -e .env.test -- vitest --exclude 'src/**/*.{test,e2e}.{ts,tsx}' --fileParallelism",
     "test:int": "dotenv -e .env.test -- vitest run --exclude 'src/**/*.{spec,e2e}.{ts,tsx}' --no-file-parallelism",

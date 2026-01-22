@@ -1,4 +1,5 @@
-import { makeNewTodo, type Todo } from "./make-new-todo";
+import type { Todo } from "../schemas/todo.contract";
+import { makeNewTodo } from "./make-new-todo";
 
 // Describe serve para agrupar um bloco de teste
 describe("makeNewTodo (unit)", () => {

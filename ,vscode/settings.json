@@ -1,0 +1,6 @@
+{
+  "code-runner.executorMap": {
+    // "typescript": "npx tsx"
+    "typescript": "npx dotenv -e .env.development -- tsx"
+  }
+}
