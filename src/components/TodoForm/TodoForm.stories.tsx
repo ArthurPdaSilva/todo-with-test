@@ -1,4 +1,5 @@
-import type { Meta } from "@storybook/react";
+import { todoActionStoryMock } from "@/core/__tests__/mocks/todo-action-story";
+import type { Meta, StoryObj } from "@storybook/react";
 import { TodoForm } from ".";
 
 const meta: Meta<typeof TodoForm> = {
@@ -20,4 +21,16 @@ const meta: Meta<typeof TodoForm> = {
 
 export default meta;
 
-// type Story = StoryObj<typeof TodoForm>;
+type Story = StoryObj<typeof TodoForm>;
+
+export const Default: Story = {
+  args: {
+    action: todoActionStoryMock.create.success,
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    action: todoActionStoryMock.create.error,
+  },
+};

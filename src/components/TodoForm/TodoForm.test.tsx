@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { TodoForm } from ".";
 
 const user = userEvent.setup();
+// Branch, ele são ramificações de ifs
 
 describe("<TodoForm /> (integration)", () => {
   test("deve renderizar todos os componentes do form", async () => {
@@ -33,7 +34,7 @@ describe("<TodoForm /> (integration)", () => {
   });
 
   test("deve desativar o botão enquanto envia a action", async () => {
-    const { btn, input } = renderForm({ delay: 5 });
+    const { btn, input } = renderForm({ delay: 1000 });
     await user.type(input, "tarefa");
     await user.click(btn);
 

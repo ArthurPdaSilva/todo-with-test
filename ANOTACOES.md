@@ -294,10 +294,13 @@ Arquivo `package.json`:
     "test:int": "dotenv -e .env.test -- vitest run --exclude 'src/**/*.{spec,e2e}.{ts,tsx}' --no-file-parallelism",
     "test:int:watch": "dotenv -e .env.test -- vitest --exclude 'src/**/*.{spec,e2e}.{ts,tsx}' --no-file-parallelism",
     "test:cov": "dotenv -e .env.test -- vitest run --coverage --no-file-parallelism",
-    "test:e2e": "dotenv -e .env.e2e -- playwright test",
-    "test:e2e:headed": "dotenv -e .env.e2e -- playwright test --headed",
-    "test:e2e:debug": "dotenv -e .env.e2e -- playwright test --debug",
-    "test:e2e:ui": "dotenv -e .env.e2e -- playwright test --ui",
+    "test:e2e": "dotenv -e .env.e2e -- playwright test --reporter null",
+     "test:e2e": "dotenv -e .env.e2e -- playwright test --reporter null", 
+    //  npm run test:e2e -- -g 'nome do teste' --repeat-each 100 (Roda o teste 100x no terminal para detectar se o teste está flake)
+        //  npm run test:e2e -- --repeat-each 100 (Roda todos os testes umas 100x no terminal para detectar se o teste está flake)
+    "test:e2e:headed": "dotenv -e .env.e2e -- playwright test --headed --reporter null",
+    "test:e2e:debug": "dotenv -e .env.e2e -- playwright test --debug --reporter null",
+    "test:e2e:ui": "dotenv -e .env.e2e -- playwright test --ui --reporter null",
     "test:e2e:report": "dotenv -e .env.e2e -- playwright show-report",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

@@ -16,7 +16,7 @@ export function TodoForm({ action }: TodoFormProps) {
   const ref = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.stopPropagation();
+    e.preventDefault();
 
     const input = ref.current;
     if (!input) return;
